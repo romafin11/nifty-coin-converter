@@ -1,4 +1,4 @@
-name: Run Currency Converter App
+name: currency converter app
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 jobs:
-  build-and-run:
+  dev-run:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,13 +17,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'  # You can change to 16, 20, etc.
+          node-version: '18'  # or your preferred version
 
       - name: Install dependencies
         run: npm install
 
-      - name: Run the app
-        run: node index.js  # change to your entry file
+      - name: Run dev script
+        run: npm run dev
+
 
       # Optional: run tests if you have any
       # - name: Run tests
