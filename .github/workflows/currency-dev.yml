@@ -30,8 +30,14 @@ jobs:
       # - name: Run tests
       #   run: npm test
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+      - name: Install ngrok
+        run: npm install -g ngrok
+
+      - name: Start server
+        run: |
+          npm run start &  # Or node index.js
+          sleep 5
+
+      - name: Expose server with ngrok
+        run: ngrok http 3000
+
